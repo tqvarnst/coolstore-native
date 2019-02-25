@@ -1,0 +1,13 @@
+version: '2'
+services:
+  catalog-database:
+    image: postgres:10.5
+    ports:
+      - "5432:5432"
+    environment:
+      - POSTGRES_USER=catalog
+      - POSTGRES_PASSWORD=secret
+      - POSTGRES_DB=catalog_db
+    ulimits:
+      memlock: -1
+    mem_swappiness: 0
