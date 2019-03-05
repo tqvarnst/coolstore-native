@@ -24,7 +24,7 @@ before_install:
 
 script:
   - mvn clean package -Pnative -DskipTests || exit
-  - docker build -t catalog-native . && docker tag catalog-native:latest $CATALOG_IMAGE_REPO:latest && docker push $CATALOG_IMAGE_REPO:latest
-  - docker build -t inventory-native . && docker tag inventory-native:latest $INVENTORY_IMAGE_REPO:latest && docker push $INVENTORY_IMAGE_REPO:latest
+  - docker build -t catalog-native catalog && docker tag catalog-native:latest $CATALOG_IMAGE_REPO:latest && docker push $CATALOG_IMAGE_REPO:latest
+  - docker build -t inventory-native inventory && docker tag inventory-native:latest $INVENTORY_IMAGE_REPO:latest && docker push $INVENTORY_IMAGE_REPO:latest
 
 
