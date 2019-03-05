@@ -23,8 +23,9 @@ before_install:
 
 script:
   - pushd catalog
-  - mvn clean package -Pnative -DskipTests
-  - docker build -t catalog-native .
-  - docker tag catalog-native:latest $CATALOG_IMAGE_REPO:latest
+  - mvn clean package -Pnative -DskipTests && \
+      docker build -t catalog-native . && \
+      docker tag catalog-native:latest $CATALOG_IMAGE_REPO:latest && \
+      docker push
   - popd
 
