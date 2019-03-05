@@ -1,6 +1,7 @@
 env:
   global:
   - CATALOG_IMAGE_REPO=quay.io/tqvarnst/catalog-native
+  - $INVENTORY_IMAGE_REPO=quay.io/tqvarnst/inventory-native
   - GRAALVM_HOME=$HOME/graalvm-ce-1.0.0-rc12
 
 cache:
@@ -22,7 +23,8 @@ before_install:
   - tar -zxvf graalvm-ce-1.0.0-rc12-linux-amd64.tar.gz -C $HOME/
 
 script:
-  - pushd catalog
-  - mvn clean package -Pnative -DskipTests && docker build -t catalog-native . && docker tag catalog-native:latest $CATALOG_IMAGE_REPO:latest && docker push $CATALOG_IMAGE_REPO:latest
-  - popd
+  - mvn clean package -Pnative -DskipTests || exit
+  - docker build -t catalog-native . && docker tag catalog-native:latest $CATALOG_IMAGE_REPO:latest && docker push $CATALOG_IMAGE_REPO:latest
+  - docker build -t inventory-native . && docker tag inventory-native:latest $INVENTORY_IMAGE_REPO:latest && docker push $INVENTORY_IMAGE_REPO:latest
+
 
