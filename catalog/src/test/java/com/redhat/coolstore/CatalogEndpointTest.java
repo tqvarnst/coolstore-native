@@ -1,12 +1,11 @@
 package com.redhat.coolstore;
 
 import com.redhat.coolstore.model.Product;
+import io.quarkus.test.junit.QuarkusTest;
 import io.restassured.http.ContentType;
-import io.restassured.response.Response;
-import org.jboss.shamrock.test.junit.ShamrockTest;
 import org.junit.jupiter.api.Test;
-import org.wildfly.common.Assert;
 
+import javax.inject.Inject;
 import javax.json.bind.Jsonb;
 import javax.json.bind.JsonbBuilder;
 
@@ -14,16 +13,17 @@ import static io.restassured.RestAssured.given;
 import static org.hamcrest.CoreMatchers.equalTo;
 import static org.hamcrest.CoreMatchers.hasItems;
 
-@ShamrockTest
+@QuarkusTest
 public class CatalogEndpointTest {
 
-//    @Inject
-//    ProductRepository repository;
-//
-//    @Test
-//    public void testCDI() {
-//        assertNotNull(repository);
-//    }
+
+    @Inject
+    ProductRepository repository;
+
+    @Test
+    public void testCDI() {
+        assert repository!=null;
+    }
 
     @Test
     void testRetriveAll() {

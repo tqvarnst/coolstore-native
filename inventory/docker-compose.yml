@@ -5,9 +5,9 @@ services:
     ports:
       - "5432:5432"
     environment:
-      - POSTGRES_USER=catalog
+      - POSTGRES_USER=inventory
       - POSTGRES_PASSWORD=secret
-      - POSTGRES_DB=catalog
+      - POSTGRES_DB=inventory
     ulimits:
       memlock: -1
     mem_swappiness: 0

@@ -38,13 +38,4 @@ public class ProductRepository {
     public Product getById(Long id) {
         return em.find(Product.class,id);
     }
-
-//    @PreDestroy
-//    private void destroy() {
-//        if(em!=null) {
-//            em.close();
-//        }
-//    }
-
-
 }
