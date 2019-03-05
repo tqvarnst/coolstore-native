@@ -19,7 +19,7 @@ before_install:
   - docker login -u="$DOCKER_USER" -p="$DOCKER_PASS" quay.io
   - cp .travis.settings.xml $HOME/.m2/settings.xml
   - curl -LO https://github.com/oracle/graal/releases/download/vm-1.0.0-rc12/graalvm-ce-1.0.0-rc12-linux-amd64.tar.gz
-  - tar -zxvf graalvm-ce-1.0.0-rc12-linux-amd64.tar.gz $HOME/
+  - tar -zxvf graalvm-ce-1.0.0-rc12-linux-amd64.tar.gz -C $HOME/
 
 script:
   - pushd catalog
