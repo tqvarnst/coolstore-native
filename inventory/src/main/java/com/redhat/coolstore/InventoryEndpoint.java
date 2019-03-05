@@ -19,6 +19,12 @@ public class InventoryEndpoint {
     @Inject
     InventoryRepository repository;
 
+
+    @GET
+    public Response getProductsInventory() {
+        return Response.ok(repository.getInventories()).build();
+    }
+
     @GET
     @Path("{id}")
     public Response getProduct(@PathParam("id") String id) {
